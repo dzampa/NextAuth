@@ -5,7 +5,7 @@ import { api } from "../services/apiClient";
 
 type User = {
   email: string;
-  permission: string[];
+  permissions: string[];
   roles: string[];
 };
 
@@ -44,11 +44,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
       api
         .get("/me")
         .then((response) => {
-          const { email, permission, roles } = response.data;
+          const { email, permissions, roles } = response.data;
 
           setUser({
             email,
-            permission,
+            permissions,
             roles,
           });
         })
@@ -78,7 +78,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
       setUser({
         email,
-        permission,
+        permissions: permission,
         roles,
       });
 
